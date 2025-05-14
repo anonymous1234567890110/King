@@ -8,18 +8,18 @@
         /* --- الأنماط العامة --- */
         body {
             font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%); /* خلفية داكنة للتركيز */
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
             color: #ecf0f1;
             margin: 0;
             padding: 0;
-            overflow: hidden; /* منع أي تمرير غير مرغوب فيه */
+            overflow: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            display: flex; /* للمساعدة في توسيط game-container */
+            display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh; /* تأكد من أن الجسم يملأ الشاشة */
+            min-height: 100vh;
         }
 
         /* --- أنماط خاصة بـ game.html --- */
@@ -29,9 +29,9 @@
             align-items: center;
             justify-content: space-around;
             width: 100%;
-            max-width: 480px; /* حد أقصى لعرض اللعبة */
-            height: 100vh; /* اجعل حاوية اللعبة تملأ الشاشة */
-            max-height: 800px; /* ولكن ليس أطول من اللازم على الشاشات الطويلة جداً */
+            max-width: 480px; /* الوضع الافتراضي للهواتف */
+            height: 100vh;
+            max-height: 800px; /* الوضع الافتراضي للهواتف */
             padding: 15px;
             box-sizing: border-box;
             position: relative;
@@ -42,39 +42,39 @@
             justify-content: space-between;
             width: 100%;
             padding: 10px 5px;
-            font-size: 1.3em; /* أكبر قليلاً */
+            font-size: 1.3em;
             font-weight: bold;
             background-color: rgba(0,0,0,0.2);
             border-radius: 8px;
             margin-bottom: 10px;
         }
-        .stats-bar .score { color: #2ecc71; } /* أخضر للنقاط */
+        .stats-bar .score { color: #2ecc71; }
         .stats-bar .hearts span {
-            color: #e74c3c; /* أحمر للقلوب */
-            font-size: 1.2em; /* أكبر للقلوب */
+            color: #e74c3c;
+            font-size: 1.2em;
             transition: transform 0.2s ease-in-out;
         }
         .stats-bar .hearts span.lost {
-            color: #7f8c8d; /* رمادي للقلب المفقود */
+            color: #7f8c8d;
             transform: scale(0.8);
         }
 
-
         .char-display {
-            font-size: 7em;
+            font-size: clamp(4.5em, 18vw, 7em);
             font-weight: bold;
             color: #f1c40f;
             margin: 15px 0;
-            min-height: 1.2em; /* مساحة كافية للحرف */
+            min-height: 1.2em;
             text-shadow: 0 0 8px #f1c40f, 0 0 15px #f1c40f, 3px 3px 3px #000;
-            animation: fadeInChar 0.4s ease-out; /* أنيميشن لظهور الحرف */
+            animation: fadeInChar 0.4s ease-out;
+            text-align: center;
         }
 
         @keyframes fadeInChar {
             from { opacity: 0; transform: scale(0.5) translateY(20px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
-        .char-display.pulse { /* أنيميشن نبض عند اقتراب الوقت */
+        .char-display.pulse {
             animation: pulseWarning 0.5s infinite alternate;
         }
         @keyframes pulseWarning {
@@ -82,34 +82,33 @@
             to { transform: scale(1.1); color: #e74c3c; }
         }
 
-
         .timer-bar-container {
             width: 90%;
-            max-width: 350px;
+            max-width: 350px; /* الوضع الافتراضي للهواتف */
             height: 25px;
-            background-color: #7f8c8d; /* رمادي أغمق للخلفية */
+            background-color: #7f8c8d;
             border-radius: 12px;
             overflow: hidden;
             margin-bottom: 20px;
-            border: 3px solid #2c3e50; /* إطار بسيط */
+            border: 3px solid #2c3e50;
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .timer-bar {
             height: 100%;
             width: 100%;
-            background: linear-gradient(to right, #2ecc71, #27ae60); /* تدرج أخضر جميل */
+            background: linear-gradient(to right, #2ecc71, #27ae60);
             border-radius: 9px 0 0 9px;
             transition: width 0.1s linear, background 0.5s ease;
         }
 
         .keyboard {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(45px, 1fr)); /* أزرار أكبر قليلاً */
-            gap: 8px; /* مسافة أكبر */
+            grid-template-columns: repeat(auto-fit, minmax(45px, 1fr)); /* الوضع الافتراضي للهواتف */
+            gap: 8px;
             padding: 15px;
             width: 100%;
-            max-width: 450px;
+            max-width: 450px; /* الوضع الافتراضي للهواتف */
             background-color: rgba(0,0,0,0.25);
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
@@ -119,14 +118,14 @@
             font-size: 1.4em;
             font-weight: bold;
             padding: 12px 5px;
-            background-color: #566573; /* لون أزرار أغمق وأكثر أناقة */
+            background-color: #566573;
             color: white;
             border: 1px solid #7f8c8d;
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.15s, transform 0.1s, box-shadow 0.15s;
             -webkit-tap-highlight-color: transparent;
-            box-shadow: 0 3px 0px #34495e; /* تأثير 3D بسيط */
+            box-shadow: 0 3px 0px #34495e;
         }
 
         .keyboard button:hover {
@@ -136,7 +135,7 @@
             background-color: #f1c40f;
             color: #2c3e50;
             transform: translateY(2px) scale(0.95);
-            box-shadow: 0 1px 0px #c09821; /* تعديل الظل عند الضغط */
+            box-shadow: 0 1px 0px #c09821;
         }
         
         .keyboard button.correct-animation {
@@ -158,14 +157,13 @@
             50% { background-color: #e74c3c; box-shadow: 0 0 10px #e74c3c;}
         }
 
-
         .game-over-screen {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(44, 62, 80, 0.95); /* خلفية أكثر كثافة */
+            background-color: rgba(44, 62, 80, 0.95);
             color: white;
             display: none;
             flex-direction: column;
@@ -184,7 +182,7 @@
 
         .game-over-screen h2 {
             font-size: 2.8em;
-            color: #e74c3c; /* أحمر لـ "انتهت اللعبة" */
+            color: #e74c3c;
             margin-bottom: 15px;
             text-shadow: 1px 1px 2px #000;
         }
@@ -211,14 +209,14 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         .game-over-screen button:hover {
-            background-color: #f39c12; /* برتقالي عند المرور */
+            background-color: #f39c12;
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(243, 156, 18, 0.4);
         }
          .game-over-screen button:active {
             transform: translateY(1px) scale(0.98);
         }
-        .game-over-screen .home-btn-style { /* زر العودة للرئيسية */
+        .game-over-screen .home-btn-style {
             background-color: #95a5a6;
             color: #2c3e50;
             margin-top: 15px;
@@ -228,16 +226,87 @@
              box-shadow: 0 6px 15px rgba(127, 140, 141, 0.4);
         }
 
-        /* تصميم متجاوب للعبة */
-        @media (max-height: 600px), (max-width: 380px) { /* للشاشات القصيرة أو الضيقة */
-            .char-display { font-size: 5em; margin: 10px 0; }
+        /* --- تصميم متجاوب للهواتف الصغيرة --- */
+        @media (max-height: 600px), (max-width: 380px) {
+            .char-display {
+                font-size: clamp(3.5em, 15vw, 5em);
+                margin: 10px 0;
+            }
             .keyboard { gap: 5px; padding: 10px; }
             .keyboard button { font-size: 1.1em; padding: 10px 4px; }
-            .stats-bar { font-size: 1em; padding: 8px 5px; }
+            .stats-bar { font-size: 1.1em; padding: 8px 5px; margin-bottom: 5px;}
             .timer-bar-container { height: 20px; margin-bottom: 15px;}
             .game-over-screen h2 { font-size: 2.2em; }
             .game-over-screen p { font-size: 1.3em; }
             .game-over-screen button { font-size: 1.1em; padding: 12px 25px; margin-top: 20px; }
+        }
+         /* --- تصميم متجاوب للشاشات الأفقية الصغيرة --- */
+        @media (max-height: 450px) and (min-width: 481px) {
+            .char-display {
+                font-size: clamp(3em, 12vw, 4.5em);
+                margin: 5px 0;
+            }
+            .stats-bar { font-size: 1em; margin-bottom: 5px; }
+            .keyboard { padding: 8px; gap: 4px; }
+            .keyboard button { font-size: 1em; padding: 8px 3px;}
+            .timer-bar-container { height: 18px; margin-bottom: 10px; }
+            .game-container { padding: 10px; }
+        }
+
+        /* --- تصميم متجاوب للأجهزة اللوحية --- */
+        @media (min-width: 768px) {
+            .game-container {
+                max-width: 640px; /* زيادة عرض حاوية اللعبة */
+                max-height: 900px; /* زيادة ارتفاع حاوية اللعبة */
+                padding: 20px;
+            }
+
+            .stats-bar {
+                font-size: 1.6em; 
+                padding: 12px 8px;
+                margin-bottom: 15px;
+            }
+            .stats-bar .hearts span {
+                font-size: 1.5em; 
+            }
+
+            .char-display {
+                font-size: clamp(6em, 20vw, 9em); 
+                margin: 25px 0;
+            }
+
+            .timer-bar-container {
+                max-width: 500px; 
+                height: 30px; 
+                margin-bottom: 30px;
+            }
+
+            .keyboard {
+                grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); 
+                gap: 10px; 
+                padding: 20px; 
+                max-width: 600px; 
+            }
+
+            .keyboard button {
+                font-size: 1.8em; 
+                padding: 18px 8px; 
+            }
+
+            .game-over-screen h2 {
+                font-size: 3.5em; 
+            }
+            .game-over-screen p {
+                font-size: 2em;   
+            }
+            .game-over-screen p .score-highlight {
+                 font-size: 1.3em;
+            }
+            .game-over-screen button {
+                font-size: 1.6em; 
+                padding: 18px 35px; 
+                margin-top: 30px;
+            }
         }
     </style>
 </head>
@@ -273,7 +342,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const charDisplay = document.getElementById('charDisplay');
             const scoreValue = document.getElementById('scoreValue');
-            const heartsDisplay = document.getElementById('heartsDisplay'); // تم تغيير الاسم ليتناسب مع العرض
+            const heartsDisplay = document.getElementById('heartsDisplay');
             const keyboardContainer = document.getElementById('keyboard');
             const timerBar = document.getElementById('timerBar');
             const gameOverScreen = document.getElementById('gameOverScreen');
@@ -284,18 +353,18 @@
 
             const ALPHABET_AR = "أبتثجحخدذرزسشصضطظعغفقكلمنهوي";
             const ALPHABET_EN = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            const ALPHABET = ALPHABET_EN; // اختر مجموعة الأحرف (الإنجليزية حاليًا)
+            const ALPHABET = ALPHABET_EN; 
 
             let score = 0;
             let hearts = 3;
             const MAX_HEARTS = 3;
             let currentCharacter = '';
             let timerId;
-            let timerIntervalId; // لمؤقت النبض
+            let timerIntervalId; 
 
-            let initialTimePerChar = 3500; // 3.5 ثواني (أكثر قليلاً في البداية)
-            let minTimePerChar = 1200;    // 1.2 ثانية كحد أدنى (أكثر تحديًا)
-            let timeDecreaseFactor = 40;  // مقدار النقصان بالمللي ثانية (أقل قليلاً لجعل الصعوبة تدريجية أكثر)
+            let initialTimePerChar = 3500; 
+            let minTimePerChar = 1200;    
+            let timeDecreaseFactor = 40;  
 
             let audioCtx;
             try {
@@ -313,7 +382,7 @@
                 gainNode.connect(audioCtx.destination);
 
                 let duration = 0.2;
-                gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime); // مستوى صوت أعلى قليلاً
+                gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime); 
 
                 if (type === 'success') {
                     oscillator.type = 'triangle';
@@ -323,7 +392,7 @@
                 } else if (type === 'error') {
                     oscillator.type = 'square';
                     oscillator.frequency.setValueAtTime(220, audioCtx.currentTime); // A3
-                    oscillator.frequency.linearRampToValueAtTime(110, audioCtx.currentTime + 0.15); // A2 (نزول حاد)
+                    oscillator.frequency.linearRampToValueAtTime(110, audioCtx.currentTime + 0.15); // A2
                     duration = 0.2;
                 } else if (type === 'gameOver') {
                     oscillator.type = 'sawtooth';
@@ -332,10 +401,10 @@
                     gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
                     duration = 0.5;
                 }
-                 else if (type === 'tick') { // صوت خفيف للمؤقت
+                 else if (type === 'tick') { 
                     oscillator.type = 'sine';
                     oscillator.frequency.setValueAtTime(800, audioCtx.currentTime);
-                    gainNode.gain.setValueAtTime(0.03, audioCtx.currentTime); // خافت جدًا
+                    gainNode.gain.setValueAtTime(0.03, audioCtx.currentTime); 
                     duration = 0.05;
                 }
 
@@ -372,22 +441,22 @@
                 updateHeartsDisplay();
                 
                 charDisplay.textContent = currentCharacter;
-                charDisplay.classList.remove('pulse'); // إزالة النبض عند تحديث الحرف
-                charDisplay.style.animation = 'none'; // إعادة تعيين الأنيميشن
-                void charDisplay.offsetWidth; // خدعة لإعادة تشغيل الأنيميشن
+                charDisplay.classList.remove('pulse'); 
+                charDisplay.style.animation = 'none'; 
+                void charDisplay.offsetWidth; 
                 charDisplay.style.animation = 'fadeInChar 0.4s ease-out';
             }
 
             function startTimer() {
                 clearTimeout(timerId);
-                clearInterval(timerIntervalId); // مسح مؤقت النبض
+                clearInterval(timerIntervalId); 
                 charDisplay.classList.remove('pulse');
 
                 let currentTimeForChar = Math.max(minTimePerChar, initialTimePerChar - (score * timeDecreaseFactor));
                 
                 timerBar.style.transition = 'none';
                 timerBar.style.width = '100%';
-                timerBar.style.background = 'linear-gradient(to right, #2ecc71, #27ae60)'; // أخضر
+                timerBar.style.background = 'linear-gradient(to right, #2ecc71, #27ae60)'; 
 
                 requestAnimationFrame(() => {
                     requestAnimationFrame(() => {
@@ -396,23 +465,22 @@
                     });
                 });
                 
-                // تغيير لون المؤقت تدريجيًا وتحذير النبض
-                const warningTime = currentTimeForChar * 0.4; // متى يبدأ التحذير (آخر 40%)
+                const warningTime = currentTimeForChar * 0.4; 
                 setTimeout(() => {
-                    if (timerBar.style.width !== '0%' && hearts > 0 && gameOverScreen.style.display !== 'flex') { // تأكد أن اللعبة ما زالت جارية
-                        timerBar.style.background = 'linear-gradient(to right, #f39c12, #e67e22)'; // برتقالي
+                    if (timerBar.style.width !== '0%' && hearts > 0 && gameOverScreen.style.display !== 'flex') { 
+                        timerBar.style.background = 'linear-gradient(to right, #f39c12, #e67e22)'; 
                         charDisplay.classList.add('pulse');
-                        playSound('tick'); // صوت خفيف مع بداية النبض
-                        timerIntervalId = setInterval(() => { // لتكرار صوت النبض
+                        playSound('tick'); 
+                        timerIntervalId = setInterval(() => { 
                              if (hearts > 0 && gameOverScreen.style.display !== 'flex' && charDisplay.classList.contains('pulse')) playSound('tick');
                              else clearInterval(timerIntervalId);
-                        }, 500); // كل نصف ثانية
+                        }, 500); 
                     }
                 }, currentTimeForChar - warningTime);
 
                 setTimeout(() => {
                      if (timerBar.style.width !== '0%' && hearts > 0 && gameOverScreen.style.display !== 'flex') {
-                        timerBar.style.background = 'linear-gradient(to right, #e74c3c, #c0392b)'; // أحمر
+                        timerBar.style.background = 'linear-gradient(to right, #e74c3c, #c0392b)'; 
                      }
                 }, currentTimeForChar - (warningTime / 2));
 
@@ -427,7 +495,6 @@
             function applyButtonFeedback(button, type) {
                 if (button) {
                     button.classList.add(type === 'correct' ? 'correct-animation' : 'wrong-animation');
-                    // إزالة الكلاس بعد انتهاء الأنيميشن
                     setTimeout(() => button.classList.remove(type === 'correct' ? 'correct-animation' : 'wrong-animation'), type === 'correct' ? 300 : 400);
                 }
             }
@@ -442,13 +509,12 @@
             function handleIncorrect(button, timeout = false) {
                 playSound('error');
                 hearts--;
-                updateHeartsDisplay(); // تحديث فوري للقلوب
+                updateHeartsDisplay(); 
                 applyButtonFeedback(button, 'wrong');
                 
                 if (hearts <= 0) {
                     gameOver();
                 } else {
-                    // يمكن اختيار إما استمرار الجولة أو بدء جولة جديدة. لنبدأ جولة جديدة
                     nextRound();
                 }
             }
@@ -456,7 +522,6 @@
             function handleKeyPress(pressedChar, buttonElement = null) {
                 if (gameOverScreen.style.display === 'flex' || !currentCharacter) return;
 
-                // لمنع الضغطات المتعددة السريعة على نفس الزر
                 if (buttonElement && buttonElement.classList.contains('active-feedback')) return;
                 if(buttonElement) {
                     buttonElement.classList.add('active-feedback');
@@ -472,25 +537,21 @@
             
             document.addEventListener('keydown', (event) => {
                 if (gameOverScreen.style.display === 'flex' || !currentCharacter) return;
-                // تجاهل المفاتيح المعدلة (Shift, Ctrl, Alt) لتجنب السلوك غير المرغوب فيه
                 if (event.ctrlKey || event.altKey || event.metaKey) return;
-                // تجاهل مفاتيح مثل Tab, Enter, Escape إذا لم تكن جزءًا من اللعب
-                if (event.key.length > 1 && event.key !== "Backspace") { // اسمح بـ Backspace إذا كنت ستضيف ميزة تعديل
-                    // (حاليا لا حاجة)
+                if (event.key.length > 1 && event.key !== "Backspace") { 
                     // return;
                 }
-
 
                 if (ALPHABET.includes(event.key.toUpperCase())) {
                     const physicalKey = event.key.toUpperCase();
                     const onScreenButton = Array.from(keyboardContainer.children).find(btn => btn.textContent === physicalKey);
                     handleKeyPress(physicalKey, onScreenButton);
-                    event.preventDefault(); // منع السلوك الافتراضي للمتصفح لبعض المفاتيح (مثل البحث عند كتابة حروف)
+                    event.preventDefault(); 
                 }
             });
 
             function nextRound() {
-                if (hearts <= 0) { // تأكد مرة أخرى قبل بدء جولة جديدة
+                if (hearts <= 0) { 
                     if (gameOverScreen.style.display !== 'flex') gameOver();
                     return;
                 }
@@ -525,12 +586,13 @@
                 score = 0;
                 hearts = MAX_HEARTS;
                 gameOverScreen.style.display = 'none';
-                gameOverScreen.style.animation = 'none'; // لإعادة تعيين أنيميشن الظهور إذا أعيد اللعب
-                void gameOverScreen.offsetWidth; // لإعادة التشغيل
-                gameOverScreen.style.animation = 'fadeInGameOver 0.5s ease-out';
+                
+                gameOverScreen.style.animation = 'none'; 
+                void gameOverScreen.offsetWidth; 
+                // The animation will be re-applied by the CSS when display becomes 'flex'
+                // gameOverScreen.style.animation = 'fadeInGameOver 0.5s ease-out'; // Re-trigger if needed
 
-
-                if (keyboardContainer.children.length === 0) { // إنشاء لوحة المفاتيح مرة واحدة فقط
+                if (keyboardContainer.children.length === 0) { 
                     createKeyboard();
                 }
                 nextRound();
@@ -538,10 +600,10 @@
 
             playAgainButton.addEventListener('click', startGame);
             homeButton.addEventListener('click', () => {
-                window.location.href = 'home.html';
+                window.location.href = 'home.html'; // تم التعديل ليكون home.html
             });
 
-            startGame(); // بدء اللعبة عند تحميل الصفحة
+            startGame(); 
         });
     </script>
 </body>
