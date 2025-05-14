@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2c3e50"/>
+    <title>ملك لوحة المفاتيح</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        /* --- الأنماط العامة --- */
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* خط عربي محسن */
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%); /* خلفية متدرجة جذابة */
+            color: #ecf0f1;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        /* --- أنماط خاصة بـ home.html --- */
+        .home-container {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .home-title {
+            font-size: 2.8em;
+            margin-bottom: 25px;
+            color: #f1c40f; /* ذهبي أكثر إشراقًا */
+            text-shadow: 0 0 5px #f1c40f, 0 0 10px #f1c40f, 0 0 15px #000, 2px 2px 2px #000; /* تأثير نيون خفيف */
+            animation: pulseTitle 2s infinite alternate;
+        }
+
+        @keyframes pulseTitle {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+
+        .start-button {
+            padding: 18px 35px;
+            font-size: 1.6em;
+            font-weight: bold;
+            background-color: #27ae60; /* أخضر زمردي */
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-transform: uppercase;
+        }
+
+        .start-button:hover {
+            background-color: #2ecc71; /* أخضر أفتح عند المرور */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
+        }
+        .start-button:active {
+            transform: translateY(1px) scale(0.98);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .high-score-display {
+            margin-top: 35px;
+            font-size: 1.3em;
+            color: #bdc3c7; /* رمادي فاتح */
+        }
+        .high-score-display span {
+            font-weight: bold;
+            color: #f1c40f;
+            font-size: 1.2em;
+        }
+
+        /* تصميم متجاوب */
+        @media (max-width: 600px) {
+            .home-title {
+                font-size: 2.2em;
+            }
+            .start-button {
+                font-size: 1.3em;
+                padding: 15px 30px;
+            }
+            .high-score-display {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="home-container">
+        <h1 class="home-title">👑 ملك لوحة المفاتيح 👑</h1>
+        <button id="startButton" class="start-button">ابدأ اللعب</button>
+        <div class="high-score-display">
+            أفضل نتيجة: <span id="highScoreValue">0</span>
+        </div>
+    </div>
+
+    <script>
+        // تسجيل Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('ServiceWorker registration failed: ', registrationError);
+                    });
+            });
+        }
+
+        // عرض أفضل نتيجة
+        document.addEventListener('DOMContentLoaded', () => {
+            const highScore = localStorage.getItem('keyboardKingHighScore') || 0;
+            document.getElementById('highScoreValue').textContent = highScore;
+
+            document.getElementById('startButton').addEventListener('click', () => {
+                window.location.href = 'game.html';
+            });
+        });
+    </script>
+</body>
+</html>
